@@ -1,0 +1,29 @@
+[
+  {
+    "domain": "example.com",
+    "domain_url": "https://example.com",
+    "registrar": "GoDaddy",
+    "registrar_url": "https://godaddy.com",
+    "expiry_date": "2024-12-31",
+    "notes": "Main website",
+    "status": "Active"
+  },
+  {
+    "domain": "test.org",
+    "domain_url": "https://test.org",
+    "registrar": "Namecheap",
+    "registrar_url": "https://namecheap.com",
+    "expiry_date": "2024-11-15",
+    "notes": "Testing domain",
+    "status": "Active"
+  },
+  {
+    "domain": "demo.net",
+    "domain_url": "https://demo.net",
+    "registrar": "Cloudflare",
+    "registrar_url": "https://cloudflare.com",
+    "expiry_date": "2025-03-20",
+    "notes": "Demo site",
+    "status": "Active"
+  }
+]

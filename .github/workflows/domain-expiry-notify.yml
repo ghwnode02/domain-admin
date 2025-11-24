@@ -1,0 +1,39 @@
+name: Domain Expiry Notification
+
+# 定时任务：每天北京时间上午 9:00 执行（已禁用自动执行，可手动触发）
+on:
+  # schedule:                        # 取消注释以启用自动执行
+  #   - cron: '0 1 * * *'            # UTC 1:00 = 北京时间 9:00
+  workflow_dispatch:                  # 支持手动触发
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Configuration
+        run: |
+          if [ -z "${{ secrets.PAGES_URL }}" ]; then
+            echo "❌ 错误：PAGES_URL Secret 未配置！"
+            echo "请在仓库设置中添加 PAGES_URL Secret"
+            echo "路径：Settings > Secrets and variables > Actions > New repository secret"
+            exit 1
+          fi
+          echo "✅ PAGES_URL 已配置"
+          
+      - name: Send Domain Expiry Notification
+        run: |
+          echo "🚀 调用 API: ${{ secrets.PAGES_URL }}/api/cron/notify"
+          
+          response=$(curl -s -w "\n%{http_code}" -X GET "${{ secrets.PAGES_URL }}/api/cron/notify")
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "📊 HTTP Status: $http_code"
+          echo "📄 Response Body: $body"
+          
+          if [ "$http_code" -ne 200 ]; then
+            echo "❌ 通知发送失败"
+            exit 1
+          else
+            echo "✅ 通知发送成功"
+          fi

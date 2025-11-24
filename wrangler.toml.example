@@ -1,0 +1,19 @@
+name = "domain-admin-demo"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-11-24"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "domain-admin-db"
+database_id = "cf5e1be1-4566-4271-86f3-3ecfb0916d67"
+
+# Environment variables for authentication
+# ADMIN_USER = "admin"
+# ADMIN_PASSWORD = "your-password"
+# JWT_SECRET = "your-secret-key"
+
+# Environment variables for notifications
+# TELEGRAM_BOT_TOKEN = "your-telegram-bot-token"
+# TELEGRAM_CHAT_ID = "your-telegram-chat-id"
+# FEISHU_WEBHOOK_URL = "your-feishu-webhook-url"
+# NOTIFY_DAYS_BEFORE = "30"
